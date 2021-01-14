@@ -1,19 +1,23 @@
-# Getting Started with Create React App
+# Getting Started with Artist Hunter App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, download the project and then run:
 
-### `npm start`
+### `npm install`
 
-Runs the app in the development mode.\
+Afterwards the setup is installed then run the following command:
+
+### `npm run'
+This will runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This will run the project!
 
+
+You can also test using the following command
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
