@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Card from "../Card";
+import ArtistCard from "../ArtistCard";
 const baseUrl = "https://rest.bandsintown.com";
 const app_id = "000";
 
@@ -12,6 +12,7 @@ class Home extends React.Component {
       ArtistData: [],
       EventArtistData: [],
       visible: false,
+      message: "Please search for an artist to get results",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,6 +46,7 @@ class Home extends React.Component {
 
       .catch((error) => {
         console.log(error);
+        this.setState({ message: "Please connect to the internet!" });
       });
   }
 
@@ -72,9 +74,6 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        {console.log(this.state.ArtistData)}
-        {console.log(this.state.EventArtistData)}
-
         <nav className="navbar navbar-dark bg-primary">
           <form className="container-md" onSubmit={this.handleSubmit}>
             <div className="input-group">
@@ -96,16 +95,30 @@ class Home extends React.Component {
               {this.state.ArtistData.map((artist, index) => {
                 return (
                   <div className="col-3" key={index}>
-                    <Card artist={artist.name} srcImage={artist.image_url} />
+                    <ArtistCard
+                      artist={artist.name}
+                      srcImage={artist.image_url}
+                      fbUrl={artist.facebook_page_url}
+                    />
                   </div>
                 );
               })}
             </>
           ) : (
-            <div className="col-12">
-              <h2 style={{ textAlign: "center", marginTop: "20px" }}>
-                Please search for an artist to get results
-              </h2>
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <h3
+                    style={{
+                      textAlign: "center",
+                      marginTop: "20px",
+                      color: "",
+                    }}
+                  >
+                    {this.state.message}
+                  </h3>
+                </div>
+              </div>
             </div>
           )}
         </div>

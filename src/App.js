@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
+import ArtistProfile from "./Components/ArtistProfile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import getArtist from "./Networking/FetchAPI";
 import "./App.css";
@@ -14,9 +15,12 @@ class App extends React.Component {
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route exact path="/" component={Home}></Route>
+          <Route
+            path="/artist"
+            component={ArtistProfile}
+            render={(props) => <ArtistProfile {...props} />}
+          ></Route>
         </Switch>
       </Router>
     );
